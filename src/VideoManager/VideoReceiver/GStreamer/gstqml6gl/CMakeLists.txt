@@ -137,7 +137,21 @@ if(EXISTS "${QGC_GST_QT6_PLUGIN_PATH}/resources.qrc")
 
         set(RGBA_BASE_QSB "${CMAKE_CURRENT_BINARY_DIR}/.qsb/RGBA.frag.qsb")
         set(RGBA_GLES_SRC "${QGC_GST_QT6_PLUGIN_PATH}/RGBA_gles.frag")
-        set(RGBA_EXTERNAL "${CMAKE_CURRENT_BINARY_DIR}/.qsb/RGBA.frag.qsb.external")
+         set(RGBA_EXTERNAL "${CMAKE_CURRENT_BINARY_DIR}/.qsb/RGBA.frag.qsb.external")
+
+        
+        set(RGBA_EXTERNAL "./build/src/VideoManager/VideoReceiver/GStreamer/gstqml6gl/.qsb/RGBA.frag.qsb.external")
+#        set(RGBA_EXTERNAL ".qsb/RGBA.frag.qsb.external")
+#        set(RGBA_EXTERNAL "./src/VideoManager/VideoReceiver/GStreamer/gstqml6gl/.qsb/RGBA.frag.qsb.external")
+
+#        file(COPY "${CMAKE_CURRENT_BINARY_DIR}/.qsb/RGBA.frag.qsb.external"
+#         DESTINATION "${CMAKE_SOURCE_DIR}/src/VideoManager/VideoReceiver/GStreamer/gstqml6gl/.qsb")
+#        set(RGBA_EXTERNAL "src/VideoManager/VideoReceiver/GStreamer/gstqml6gl/.qsb/RGBA.frag.qsb.external")
+
+           message(STATUS "RGBA_EXTERNAL is: ${RGBA_EXTERNAL}")
+           message(STATUS "QSB_WRAPPER is: ${QSB_WRAPPER}")
+           message(STATUS "RGBA_GLES_SRC is: ${RGBA_GLES_SRC}")
+           message(STATUS "RGBA_BASE_QSB is: ${RGBA_BASE_QSB}")
 
         add_custom_command(
             OUTPUT ${RGBA_EXTERNAL}

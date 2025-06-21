@@ -225,4 +225,23 @@ Item {
         FlyViewPreFlightChecklistPopup {
         }
     }
+
+    Button {
+        Layout.fillWidth: true
+        text: qsTr("CAS Mission")  // This is your CAS Mission Button
+        Item {
+            Layout.fillWidth: true
+        }
+
+        onClicked: {
+        console.log("CAS Mission Button Clicked");
+          // Here you can call a function or open a dialog.
+        }
+
+        anchors.top: parent.top
+        anchors.right: parent.right
+        anchors.topMargin: _toolMargin
+        anchors.rightMargin: _toolMargin
+
+    }
 }
