@@ -27,6 +27,8 @@ import QGroundControl.FlightMap
 import QGroundControl.Palette
 import QGroundControl.ScreenTools
 import QGroundControl.Vehicle
+import "."
+
 
 // This is the ui overlay layer for the widgets/tools for Fly View
 Item {
@@ -234,14 +236,20 @@ Item {
         }
 
         onClicked: {
-        console.log("CAS Mission Button Clicked");
+            console.log("CAS Mission Button Clicked");
+            casMission.open()
           // Here you can call a function or open a dialog.
         }
 
         anchors.top: parent.top
         anchors.right: parent.right
-        anchors.topMargin: _toolMargin
-        anchors.rightMargin: _toolMargin
+        anchors.topMargin: _layoutMargin
+        anchors.rightMargin: _layoutMargin
 
     }
+
+    CASMission {
+        id: casMission
+    }
+
 }
