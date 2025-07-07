@@ -185,18 +185,16 @@ Dialog {
                 text: qsTr("Send CAS Mission")
                 enabled: approachAltField.text && coordinateField.text && egressAltField.text
                 onClicked: {
-                    console.log("Send CAS Mission:", {
-                        heading: headingBox.currentText,
-                        approachAlt: approachAltField.text,
-                        coordinate: coordinateField.text,
-                        coordinateFormat: casMissionDialog.coordinateFormat,
-                        egressDirection: egressBox.currentText,
-                        egressAlt: egressAltField.text
-                    });
+
+                    console.log("heading >>>> ", headingBox.currentText, headingBox.currentIndex)
+                    console.log("approachAlt >>>> ", approachAltField.text)
+                    console.log("coordinate >>>> ", coordinateField.text)
+                    console.log("coordinate Format >>>> ", coordinateFormat)
+                    console.log("EgressDirection >>>> ", egressBox.currentText, egressBox.currentIndex)
+                    console.log("Egress Alt >>>> ", egressAltField.text)
+
                     casMissionDialog.isVisible = false
                     casMissionDialog.close()
-
-
 
                     casMissionDialog.vehicle.flightMode = "GUIDED"    // set Guide as Mode
 
@@ -214,26 +212,19 @@ Dialog {
                         0       // param7
                     );
 
-
-
                     takeoffTimer.start()
 
-
-                    // casMissionDialog.vehicle.sendCommand(
-                    //     1,
-                    //     31010,
-                    //     true,
-                    //     90,     // heading
-                    //     50,     // approach altitude
-                    //     -35.36, // target latitude
-                    //     149.16, // target longitude
-                    //     180,    // egress direction
-                    //     60      // egress altitude
-                    // )
-
-                    console.log("Message => ", vehicle)
-//                    vehicle.sendCommand()
-                    // Here you can call a QML method / C++ method to send MAVLink.
+                    casMissionDialog.vehicle.sendCommand(
+                        1,
+                        31010,
+                        true,
+                        headingBox.currentIndex,     // heading
+                        approachAltField.text,     // approach altitude
+                        coordinateFormat, // Coordinate Format
+                        coordinateField.text, // Coordinate Value
+                        egressBox.currentIndex,    // egress direction
+                        egressAltField.text      // egress altitude
+                    )
                 }
             }
         }
